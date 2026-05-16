@@ -1,129 +1,106 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 const Blog = () => {
-  // Dummy data sirf UI feed ko populate karne ke liye
+  let navigate = useNavigate()
+  // Dummy blogs (baad me API se replace karega)
   const dummyBlogs = [
     {
       id: 1,
       title: "Understanding Microservices Architecture in 2026",
-      summary: "A deep dive into building scalable backend services using Node.js, Docker, and event-driven communication protocols.",
+      summary: "A deep dive into building scalable backend services using Node.js, Docker, and event-driven systems.",
       author: "Alex Noel",
       date: "May 14, 2026",
-      tags: ["Backend", "System Design"]
+      tags: ["Backend", "System Design"],
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31"
     },
     {
       id: 2,
       title: "Mastering Tailwind CSS Grid & Flexbox",
-      summary: "Stop guessing your layouts. Learn how to align components perfectly every single time with this definitive visual guide.",
+      summary: "Learn how to align components perfectly every single time using modern CSS techniques.",
       author: "Sarah Connor",
       date: "May 10, 2026",
-      tags: ["Frontend", "CSS"]
+      tags: ["Frontend", "CSS"],
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085"
     }
   ];
 
   return (
     <div className="min-h-screen bg-slate-900 text-white font-sans">
-      
-      {/* Header Banner */}
-      <div className="bg-slate-800 border-b border-slate-700 py-8 px-4 sm:px-6 lg:px-8 text-center shadow-lg">
+
+      {/* 🔥 Header */}
+      <div className="bg-slate-900 border-b border-slate-700 py-8 text-center shadow-lg">
         <h1 className="text-3xl font-extrabold tracking-tight">
-          DevHub <span className="text-indigo-500">Technical Blogs</span>
+          DevHub <span className="text-indigo-500">Blogs</span>
         </h1>
-        <p className="mt-2 text-sm text-slate-400">Share your knowledge, read insights, and grow together as an engineer.</p>
+        <p className="mt-2 text-sm text-slate-400">
+          Read insights from developers around the world 🚀
+        </p>
       </div>
 
-      {/* Main Content Layout */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-5 gap-8">
-        
-        {/* LEFT COLUMN: Write a New Blog Form (2/5 Space) */}
-        <div className="lg:col-span-2">
-          <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 shadow-xl sticky top-24">
-            <h2 className="text-xl font-bold mb-4 text-slate-200">Write a New Blog 📝</h2>
-            
-            <form className="space-y-4">
-              <div>
-                <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider">Blog Title</label>
-                <input 
-                  type="text" 
-                  placeholder="e.g., Getting Started with Next.js"
-                  className="mt-1 block w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
+      {/* 🔥 Blog Feed */}
+      <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
+
+        <h2 className="text-xl font-bold text-slate-200 flex items-center gap-2">
+          Recent Articles
+          <span className="text-xs bg-slate-800 border border-slate-700 text-indigo-400 px-2 py-0.5 rounded-full">
+            Latest
+          </span>
+        </h2>
+
+        {/* Blog Cards */}
+        <div className="space-y-4">
+          {dummyBlogs.map((blog) => (
+            <div
+              key={blog.id}
+              className="bg-slate-800 border border-slate-700 hover:border-slate-600 rounded-xl p-6 shadow-xl transition-all duration-200"
+            >
+
+              {/* Author & Date */}
+              <div className="flex items-center justify-between text-xs text-slate-400 mb-3">
+                <span className="font-semibold text-slate-300 hover:text-indigo-400 cursor-pointer">
+                  {blog.author}
+                </span>
+                <span>{blog.date}</span>
               </div>
 
-              <div>
-                <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider">Tags (Comma Separated)</label>
-                <input 
-                  type="text" 
-                  placeholder="e.g., React, JavaScript, WebDev"
-                  className="mt-1 block w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-              </div>
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="w-full h-40 object-cover rounded-lg mb-3"
+              />
 
-              <div>
-                <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider">Content</label>
-                <textarea 
-                  rows="6"
-                  placeholder="Write your technical article here in detail..."
-                  className="mt-1 block w-full bg-slate-900 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
-                ></textarea>
-              </div>
+              {/* Title */}
+              <h3 className="text-xl font-bold text-white mb-2 hover:text-indigo-400 cursor-pointer transition">
+                {blog.title}
+              </h3>
 
-              <button 
-                type="submit" 
-                className="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-sm font-semibold text-white transition duration-200"
-              >
-                Publish Blog
-              </button>
-            </form>
-          </div>
-        </div>
+              {/* Summary */}
+              <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                {blog.summary}
+              </p>
 
-        {/* RIGHT COLUMN: Published Blogs Feed (3/5 Space) */}
-        <div className="lg:col-span-3 space-y-6">
-          <h2 className="text-xl font-bold text-slate-200 flex items-center gap-2">
-            Recent Articles
-            <span className="text-xs bg-slate-800 border border-slate-700 text-indigo-400 px-2 py-0.5 rounded-full">Latest</span>
-          </h2>
-
-          <div className="space-y-4">
-            {dummyBlogs.map((blog) => (
-              <div key={blog.id} className="bg-slate-800 border border-slate-700 hover:border-slate-600 rounded-xl p-6 shadow-xl transition-all duration-200">
-                
-                {/* Meta info (Author & Date) */}
-                <div className="flex items-center justify-between text-xs text-slate-400 mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-slate-300 hover:text-indigo-400 cursor-pointer">{blog.author}</span>
-                  </div>
-                  <span>{blog.date}</span>
+              {/* Tags + CTA */}
+              <div className="flex items-center justify-between pt-3 border-t border-slate-700/50">
+                <div className="flex gap-2">
+                  {blog.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs bg-slate-900 text-slate-400 px-2.5 py-1 rounded-md border border-slate-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
 
-                {/* Blog Title */}
-                <h3 className="text-xl font-bold text-white mb-2 hover:text-indigo-400 cursor-pointer transition">
-                  {blog.title}
-                </h3>
-
-                {/* Summary / Snippet */}
-                <p className="text-slate-300 text-sm leading-relaxed line-clamp-3 mb-4">
-                  {blog.summary}
-                </p>
-
-                {/* Bottom Row: Tags & Read More */}
-                <div className="flex items-center justify-between pt-3 border-t border-slate-700/50">
-                  <div className="flex gap-2">
-                    {blog.tags.map((tag) => (
-                      <span key={tag} className="text-xs bg-slate-900 text-slate-400 px-2.5 py-1 rounded-md border border-slate-700">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <a href="#" className="text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition">
-                    Read Full Article →
-                  </a>
-                </div>
-
+                <button
+                  onClick={() => navigate(`/blog/${blog.id}`)} className="text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition">
+                  Read More →
+                </button>
               </div>
-            ))}
-          </div>
+
+            </div>
+          ))}
         </div>
 
       </div>

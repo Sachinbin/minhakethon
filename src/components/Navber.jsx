@@ -28,9 +28,9 @@ const Navber = () => {
                             isActive ? 'text-red-500' : "text-slate-300 hover:bg-slate-700 px-3 py-2 rounded-md"
                         }>Blogs</NavLink>
 
-                        <NavLink to="/profile" className={({ isActive }) =>
+                        <NavLink to="/project" className={({ isActive }) =>
                             isActive ? 'text-red-500' : "text-slate-300 hover:bg-slate-700 px-3 py-2 rounded-md"
-                        }>Profile</NavLink>
+                        }>Project</NavLink>
                     </div>
 
                     {/* Right Side */}

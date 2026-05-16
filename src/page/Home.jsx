@@ -25,21 +25,24 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-white font-sans">
-      
+
       {/* 1. TOP NAVBAR */}
-     
+
 
       {/* 2. MAIN LAYOUT CONTAINER */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          
+
           {/* LEFT SIDEBAR: Welcome & Filters */}
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-xl">
-              <h2 className="text-lg font-bold mb-2">Welcome Back! 👋</h2>
-              <p className="text-slate-400 text-sm">Explore fresh ideas, projects, and connect with fellow engineers.</p>
+              <h2 className="text-lg font-bold mb-2">Welcome to DevHub 🚀</h2>
+              <p className="text-slate-400 text-sm">
+                Discover amazing projects and blogs from developers around the world.
+                Sign in to share your own work and connect with the community.
+              </p>
             </div>
-            
+
             <div className="bg-slate-800 border border-slate-700 rounded-xl p-5 shadow-xl">
               <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Trending Tags</h3>
               <div className="flex flex-wrap gap-2">
@@ -54,13 +57,13 @@ const Home = () => {
 
           {/* MIDDLE CONTENT: Search & Project Feed */}
           <div className="lg:col-span-3 space-y-6">
-            
+
             {/* SEARCH BAR COMPONENT */}
             <div className="bg-slate-800 border border-slate-700 rounded-xl p-4 shadow-xl">
               <div className="relative">
-                <input 
-                  type="text" 
-                  placeholder="Search projects by tech stack, title, or skills..." 
+                <input
+                  type="text"
+                  placeholder="Search projects by tech stack, title, or skills..."
                   className="w-full bg-slate-900 border border-slate-600 rounded-lg pl-10 pr-4 py-2.5 text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
                 <div className="absolute left-3 top-3.5 text-slate-400">
@@ -75,7 +78,7 @@ const Home = () => {
             <div className="space-y-4">
               {dummyProjects.map((project) => (
                 <div key={project.id} className="bg-slate-800 border border-slate-700 hover:border-slate-600 rounded-xl p-6 shadow-xl transition-all duration-200">
-                  
+
                   {/* Project Author */}
                   <div className="flex items-center gap-3 mb-4">
                     <img src={project.avatar} alt={project.author} className="w-9 h-9 rounded-full object-cover border border-slate-600" />

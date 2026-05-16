@@ -25,8 +25,8 @@ const Login = () => {
             console.log(data);
             let res = await loginUser(data);
             dispatch(addUser(res.data.user))
-            reset()
-            navigate('/dashboard')
+            navigate('/profile')
+            reset(                                                                                                                                      )
         } catch (error) {
             console.log(error);
         }
@@ -83,7 +83,7 @@ const Login = () => {
                             </div>
                         </div>
 
-                        <div className="flex items-center justify-between">
+                        {/* <div className="flex items-center justify-between">
                             <div className="flex items-center">
                                 <input
                                     type="checkbox"
@@ -95,7 +95,7 @@ const Login = () => {
                             </div>
 
 
-                        </div>
+                        </div> */}
 
                         <div>
                             <button

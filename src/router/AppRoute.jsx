@@ -10,7 +10,11 @@ import Home from '../page/Home'
 import PublicRoute from './PublicRoute'
 import ProtectedRoute from './ProtectedRoute'
 import Blog from '../page/Blog'
-import Profile from '../page/Profile'
+import Profile from '../features/profile/ui/page/Profile'
+import Project from '../page/Project'
+import ProfileLayout from '../features/layout/ProfileLayout'
+import BlogDetails from '../components/BlogDetails'
+import ProjectDetails from '../components/ProjectDetails'
 
 const AppRoute = () => {
 
@@ -29,14 +33,22 @@ const AppRoute = () => {
                     element: <Blog />
                 },
                 {
-                    path: "profile",
-                    element: <Profile />
-                }
+                    path:'blog/:id',
+                    element:<BlogDetails/>
+                },
+                {
+                    path: "project",
+                    element: <Project />
+                },
+                 {
+                    path:'project/:id',
+                    element:<ProjectDetails/>
+                },
             ]
         },
 
 
-        // 🔓 Public Routes
+        
         {
             path: '/auth',
             element: <AuthLayout />,
@@ -51,6 +63,16 @@ const AppRoute = () => {
                 }
             ]
         },
+        {
+            path:'/profile',
+            element:<ProfileLayout/>,
+            children:[
+                {
+                    path:"",
+                    element:<Profile/>
+                }
+            ]
+        }
 
         
     ])
